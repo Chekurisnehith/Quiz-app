@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+Quiz App
+A full-stack quiz application built with React frontend and Node.js/Express backend with SQLite database.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+User registration and authentication (JWT)
 
-## Available Scripts
+10-question quiz with multiple-choice questions
 
-In the project directory, you can run:
+Real-time answer validation
 
-### `npm start`
+Score tracking and leaderboard
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+PDF certificate generation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Responsive design with modern UI
 
-### `npm test`
+Tech Stack
+Frontend
+React.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React Router for navigation
 
-### `npm run build`
+Inline CSS styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend
+Node.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Express.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+SQLite database
 
-### `npm run eject`
+JWT authentication
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bcrypt for password hashing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+PDFKit for certificate generation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Project Structure
+text
+Quizapp/
+├── backend/
+│   ├── db.sqlite          # SQLite database
+│   └── server.js          # Express server
+└── quiz-app/
+    └── src/
+        ├── App.js         # Main app component with routing
+        ├── index.js       # React app entry point
+        ├── Register.js    # User registration component
+        ├── Login.js       # User login component
+        └── Quiz.js        # Quiz component with results
+Setup Instructions
+Prerequisites
+Node.js (v14 or higher)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm or yarn
 
-## Learn More
+Backend Setup
+Navigate to the backend directory:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+bash
+cd C:\Users\snehi\OneDrive\Desktop\Quizapp\backend
+Install backend dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+npm install express sqlite3 bcrypt jsonwebtoken body-parser cors pdfkit
+Start the backend server:
 
-### Code Splitting
+bash
+node server.js
+The server will run on http://localhost:4000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Frontend Setup
+Open a new terminal and navigate to the frontend directory:
 
-### Analyzing the Bundle Size
+bash
+cd C:\Users\snehi\OneDrive\Desktop\Quizapp\quiz-app
+Install frontend dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+bash
+npm install react-router-dom
+Start the React development server:
 
-### Making a Progressive Web App
+bash
+npm start
+The application will open in your browser at http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Usage
+Register a new account or login with existing credentials
 
-### Advanced Configuration
+Take the 10-question quiz
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Get immediate feedback on each answer
 
-### Deployment
+View your final score and see if you passed (7+ correct answers)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Download a PDF certificate of completion
 
-### `npm run build` fails to minify
+Check the leaderboard to see how you rank against other users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+API Endpoints
+POST /register - User registration
+
+POST /login - User login
+
+GET /quiz - Get quiz questions
+
+POST /check-answer - Validate a single answer
+
+POST /submit-quiz - Submit completed quiz
+
+GET /leaderboard - Get leaderboard data
+
+GET /certificate - Generate PDF certificate
+
+Database Schema
+Users Table
+id (INTEGER PRIMARY KEY)
+
+name (TEXT)
+
+email (TEXT UNIQUE)
+
+password (TEXT)
+
+Results Table
+id (INTEGER PRIMARY KEY)
+
+userId (INTEGER FOREIGN KEY)
+
+score (INTEGER)
+
+total (INTEGER)
+
+passed (INTEGER)
+
+createdAt (TEXT)
+
+Quiz Questions
+The application includes 10 fixed questions covering general knowledge, math, and programming topics.
+
+Security Features
+Password hashing with bcrypt
+
+JWT authentication for API endpoints
+
+SQL injection prevention with parameterized queries
+
+CORS configuration for frontend-backend communication
+
+Customization
+Modify the SECRET constant in server.js for production
+
+Change the quiz questions in the QUESTIONS array
+
+Adjust the passing score (currently 7/10)
+
+Customize the PDF certificate design
+
